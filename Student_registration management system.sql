@@ -59,3 +59,12 @@ CREATE TABLE class_schedule (
     FOREIGN KEY (course_id) REFERENCES Courses(course_id),
     FOREIGN KEY (instructor_id) REFERENCES Instructors(instructor_id)
 );
+
+CREATE TABLE payment (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    payment_status ENUM('Paid', 'Pending', 'Overdue') DEFAULT 'Pending',
+    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);
