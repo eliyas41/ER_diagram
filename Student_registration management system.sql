@@ -47,3 +47,15 @@ CREATE TABLE enrollment (
     FOREIGN KEY (student_id) REFERENCES Students(student_id) ON DELETE CASCADE,
     FOREIGN KEY (course_id) REFERENCES Courses(course_id) ON DELETE CASCADE
 );
+
+CREATE TABLE class_schedule (
+    schedule_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_id INT,
+    instructor_id INT,
+    day_of_week ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    room_number VARCHAR(50),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id),
+    FOREIGN KEY (instructor_id) REFERENCES Instructors(instructor_id)
+);
