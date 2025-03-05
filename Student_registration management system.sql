@@ -21,7 +21,7 @@ CREATE TABLE course (
     FOREIGN KEY (department_id) REFERENCES Departments(department_id)
 );
 
-CREATE TABLE Instructor (
+CREATE TABLE instructor (
     instructor_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -32,9 +32,18 @@ CREATE TABLE Instructor (
     FOREIGN KEY (department_id) REFERENCES Departments(department_id)
 );
 
-CREATE TABLE Department (
+CREATE TABLE department (
     department_id INT PRIMARY KEY AUTO_INCREMENT,
     department_name VARCHAR(100) UNIQUE NOT NULL,
     head_of_department VARCHAR(100)
 );
 
+CREATE TABLE enrollment (
+    enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    course_id INT,
+    enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    grade VARCHAR(5),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id) ON DELETE CASCADE
+);
