@@ -10,3 +10,13 @@ CREATE TABLE student (
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status ENUM('Active', 'Inactive') DEFAULT 'Active'
 );
+
+CREATE TABLE course (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(100) NOT NULL,
+    course_code VARCHAR(20) UNIQUE NOT NULL,
+    description TEXT,
+    credit_hours INT NOT NULL,
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+);
