@@ -21,7 +21,7 @@ CREATE TABLE course (
     FOREIGN KEY (department_id) REFERENCES Departments(department_id)
 );
 
-CREATE TABLE Instructors (
+CREATE TABLE Instructor (
     instructor_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -31,3 +31,10 @@ CREATE TABLE Instructors (
     department_id INT,
     FOREIGN KEY (department_id) REFERENCES Departments(department_id)
 );
+
+CREATE TABLE Department (
+    department_id INT PRIMARY KEY AUTO_INCREMENT,
+    department_name VARCHAR(100) UNIQUE NOT NULL,
+    head_of_department VARCHAR(100)
+);
+
